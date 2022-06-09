@@ -31,6 +31,7 @@ available_methods = {
     # "your_method": YourMethodClass
 }
 ```
+4. В файле конфигурации метод указывается по ключу в объекте `available_methods`.
 
 ### Аргументы командной строки
 
