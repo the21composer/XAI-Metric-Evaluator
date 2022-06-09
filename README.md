@@ -9,6 +9,29 @@
 4. Пример запуска программы с конфигурацией experiment.jsonc - скрипт run.sh
 5. Для изучения параметров командной строки для программы (main.py) запустить `main.py --help`
 
+### Добавление имплементации методов XAI
+1. В папке xai_methods создать файл для класса метода XAI
+2. Реализовать класс метода XAI согласно данному интерфейсу:
+``` Python
+class Method:
+    def __init__(self, f, x, **kwargs):
+      # f - модель машинного обучения
+      # x - датасет
+      # kwargs - дополнительные параметры (могут быть указаны в файле конфигурации)
+    def explain(self, x):
+      # x - набор данных
+      # возвращает вектор весов признаков w
+```
+3. Импортировать класс в файле `__init__.py` и добавить в объект `available_methods`.
+``` Python
+available_methods = {
+    "shap": ShapXAI,
+    "kernelshap": KernelShap,
+    "lime": LimeXAI,
+    # "your_method": YourMethodClass
+}
+```
+
 ### Аргументы командной строки
 
   --mode {classification,regression}
